@@ -14,7 +14,7 @@ services:
         value: 3.9.0
 
   # Frontend Service (Static Site)
-  - type: static
+  - type: web
     name: dunesday-frontend
     env: static
     region: oregon
