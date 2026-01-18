@@ -13,14 +13,13 @@ services:
       - key: PYTHON_VERSION
         value: 3.9.0
 
-  # Frontend Service (Static Site)
+  # Frontend Service (Served via Node/Express)
   - type: web
     name: dunesday-frontend
-    env: static
-    plan: starter
+    env: node
+    plan: free
     buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/dist
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+    startCommand: cd frontend && node server.js
+    envVars:
+      - key: PORT
+        value: 3000
