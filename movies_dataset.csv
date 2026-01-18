@@ -1,0 +1,8 @@
+movie_id,title,release_date,popularity,vote_average,vote_count,genres,cast_popularity,director_popularity,status
+24428,The Avengers,2012-04-25,67.754,7.909,35148,"Science Fiction,Action,Adventure",23.179000000000002,1.3873,Released
+99861,Avengers: Age of Ultron,2015-04-22,15.6919,7.271,24013,"Action,Adventure,Science Fiction",21.8983,1.3873,Released
+299536,Avengers: Infinity War,2018-04-25,29.1726,8.235,31348,"Adventure,Action,Science Fiction",21.6747,1.5557,Released
+299534,Avengers: Endgame,2019-04-24,19.1393,8.237,27138,"Adventure,Science Fiction,Action",23.179000000000002,1.4664,Released
+438631,Dune,2021-09-15,20.7928,7.776,14325,"Science Fiction,Adventure",23.9204,2.834,Released
+693134,Dune: Part Two,2024-02-27,16.9316,8.13,7405,"Science Fiction,Adventure",26.108999999999998,2.834,Released
+1170608,Dune: Part Three,2026-12-17,4.8411,0.0,0,"Adventure,Science Fiction",28.335900000000002,2.834,Post Production
