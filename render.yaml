@@ -1,0 +1,33 @@
+services:
+  # Backend Service
+  - type: web
+    name: dunesday-backend
+    env: python
+    region: oregon 
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: PYTHON_VERSION
+        value: 3.9.0
+
+  # Frontend Service (Static Site)
+  - type: static
+    name: dunesday-frontend
+    env: static
+    region: oregon
+    plan: free
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: dunesday-backend
+          property: url
