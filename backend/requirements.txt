@@ -9,3 +9,4 @@ shap
 joblib
 python-multipart
 requests
+python-dotenv

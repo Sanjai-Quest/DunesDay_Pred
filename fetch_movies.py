@@ -1,7 +1,14 @@
 import requests
 import pandas as pd
+import os
+from dotenv import load_dotenv
 
-API_KEY = "04e15725458337cecdb9cdfe0d430876"
+# Load environment variables
+load_dotenv()
+
+API_KEY = os.getenv("TMDB_API_KEY")
+if not API_KEY:
+    raise ValueError("TMDB_API_KEY environment variable is not set. Please check your .env file.")
 BASE_URL = "https://api.themoviedb.org/3"
 
 

@@ -1,11 +1,17 @@
 import requests
 import functools
 import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 class MediaService:
     def __init__(self):
-        # In a real app, this should be in .env, but for now we use the key found in fetch_movies.py
-        self.api_key = "04e15725458337cecdb9cdfe0d430876"
+        # Load API key from environment variable
+        self.api_key = os.getenv("TMDB_API_KEY")
+        if not self.api_key:
+            raise ValueError("TMDB_API_KEY environment variable is not set. Please check your .env file.")
         self.base_url = "https://api.themoviedb.org/3"
         self.image_base_url = "https://image.tmdb.org/t/p/w500" # w500 is a good size for web
         self.backdrop_base_url = "https://image.tmdb.org/t/p/w1280"

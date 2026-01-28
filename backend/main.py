@@ -12,6 +12,11 @@ import numpy as np
 import os
 import json
 import shap
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
 try:
     from .schemas import PredictionRequest, PredictionResponse, SinglePrediction
 except ImportError:
@@ -19,12 +24,16 @@ except ImportError:
 
 app = FastAPI(title="Box Office Prediction API")
 
+# Get allowed origins from environment variable
+allowed_origins_str = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173,http://localhost:3000")
+allowed_origins = [origin.strip() for origin in allowed_origins_str.split(",")]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Allow all for demo
+    allow_origins=allowed_origins,  # Restricted to specific origins from environment
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST"],  # Restricted to necessary methods
+    allow_headers=["Content-Type", "Authorization"],  # Restricted to necessary headers
 )
 
 # Global variables for models
