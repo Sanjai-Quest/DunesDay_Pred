@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// Backend API endpoint URL (not a secret - this is just the server address)
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 export const api = axios.create({
